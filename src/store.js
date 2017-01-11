@@ -11,7 +11,8 @@ import story from './data/story';
 const defaultState = {
   questions: story,
   progress: {
-    currentQuestion: story[0]
+    currentQuestion: story[0],
+    answers: []
   }
 }
 

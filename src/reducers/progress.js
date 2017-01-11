@@ -6,15 +6,14 @@ export default function progress(state = [], action) {
 
       return Object.assign({}, state, {
         answers: [
-          ...state.answers,
           {
             questionId,
             answerId
-          }
+          },
+          ...state.answers
+
         ]
-      })
-      // Goto next question
-      return newState;
+      });
       break;
   }
   return state;

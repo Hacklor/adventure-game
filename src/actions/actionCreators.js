@@ -1,5 +1,7 @@
-export function loadQuestion(questionId) {
-}
-
-export function answerQuestion(question, userAnswer) {
+export function answerQuestion(questionId, answerId) {
+  return {
+    type: 'ANSWER_QUESTION',
+    questionId,
+    answerId
+  }
 }

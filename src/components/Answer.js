@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Answer = React.createClass({
+export default class Answer extends Component {
+
+  onClick(e) {
+    this.props.answerQuestion(this.props.questionId, this.props.choice.id);
+  }
+
   render() {
-    const answer = this.props.answer;
+    const title = this.props.choice.title;
 
     return (
       <li>
-        <button type="button">{answer.title}</button>
+        <button onClick={this.onClick.bind(this)} type="button">{title}</button>
       </li>
     )
   }
-});
-
-export default Answer;
+}

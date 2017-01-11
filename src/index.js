@@ -12,6 +12,7 @@ import Question from './components/Question';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 
+// Import store and history
 import store, { history } from './store';
 
 const router = (

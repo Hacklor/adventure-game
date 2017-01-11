@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Answer from './answer';
 
-const Answers = React.createClass({
+export default class Answers extends Component {
   render() {
-    const answers = this.props.answers.choices;
+    const answerQuestion = this.props.answerQuestion;
+
+    const question = this.props.question;
+    const questionId = question.id;
+    const answers = question.answers.choices;
 
     return (
       <ul>
-        {answers.map((answer, i) => <Answer key={i} answer={answer}/>)}
+        {answers.map((choice, i) => {
+          return (
+            <Answer key={i} questionId={questionId} choice={choice} answerQuestion={answerQuestion} />
+          )
+        })}
       </ul>
     )
   }
-});
-
-export default Answers;
+}

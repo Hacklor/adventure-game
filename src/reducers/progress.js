@@ -14,7 +14,6 @@ export default function progress(state = [], action) {
             answerId
           },
           ...state.answers
-
         ]
       });
       break;

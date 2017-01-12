@@ -1,4 +1,4 @@
-const story = [
+const questions = [
   {
     id: 1,
     title: "Question 1",
@@ -42,7 +42,46 @@ const story = [
         }
       ]
     }
+  },
+  {
+    id: 3,
+    title: "Question 3",
+    description: "Description of question 3",
+    answers: {
+      type: "choose",
+      choices: [
+        {
+          id: 1,
+          title: "Question 3: Answer 1"
+        },
+        {
+          id: 2,
+          title: "Question 3: Answer 2"
+        },
+        {
+          id: 3,
+          title: "Question 3: Answer 3"
+        }
+      ]
+    }
   }
 ];
+
+class Story {
+  constructor(questions) {
+    this.questions = questions;
+  }
+
+  start() {
+    return questions[0];
+  }
+
+  next(questionId, answerId) {
+    const currentIndex = this.questions.findIndex(q => q.id === questionId);
+    return questions[currentIndex + 1];
+  }
+}
+
+const story = new Story(questions);
 
 export default story;

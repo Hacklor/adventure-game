@@ -1,4 +1,5 @@
-import { ANSWER_QUESTION } from '../actions/actions'
+import story from '../data/story';
+import { ANSWER_QUESTION, NEXT_QUESTION } from '../actions/actions'
 
 export default function progress(state = [], action) {
   switch(action.type) {
@@ -17,6 +18,14 @@ export default function progress(state = [], action) {
         ]
       });
       break;
+    case NEXT_QUESTION:
+      return Object.assign({}, state, {
+        currentQuestion: story.next(action.questionId, action.answerId)
+      });
+      break;
+
+    default:
+      return state;
+      break;
   }
-  return state;
 }

@@ -4,14 +4,11 @@ import { bindActionCreators } from 'redux';
 import Answer from './answer'
 
 class Question extends Component {
-  constructor(props) {
-    super(props);
-
-    this.answerQuestion = this.props.answerQuestion;
-    this.question = this.props.currentQuestion;
-  }
 
   render() {
+    this.answerQuestion = this.props.answerQuestion;
+    this.nextQuestion = this.props.nextQuestion;
+    this.question = this.props.currentQuestion;
     const choices = this.question.answers.choices;
 
     return (
@@ -22,7 +19,8 @@ class Question extends Component {
           {
             choices.map((choice, i) => {
               return (
-                <Answer key={i} questionId={this.question.id} choice={choice} answerQuestion={this.answerQuestion} />
+                <Answer key={i} questionId={this.question.id} choice={choice}
+                  answerQuestion={this.answerQuestion} nextQuestion={this.nextQuestion} />
               )
             })
           }

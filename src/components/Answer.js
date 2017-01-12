@@ -4,6 +4,7 @@ export default class Answer extends Component {
 
   onClick(e) {
     this.props.answerQuestion(this.props.questionId, this.props.choice.id);
+    this.props.nextQuestion(this.props.questionId, this.props.choice.id);
   }
 
   render() {

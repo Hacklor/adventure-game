@@ -9,16 +9,14 @@ import rootReducer from './reducers/index';
 import story from './data/story';
 
 const defaultState = {
-  questions: story,
   progress: {
-    currentQuestion: story[0],
+    currentQuestion: story.start(),
     answers: []
   }
 }
 
-const store = createStore(rootReducer, defaultState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-export const history = syncHistoryWithStore(browserHistory, store);
+const enhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const store = createStore(rootReducer, defaultState, enhancer);
 
+export const history = syncHistoryWithStore(browserHistory, store);
 export default store;

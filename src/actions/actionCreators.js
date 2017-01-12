@@ -8,8 +8,10 @@ export function answerQuestion(questionId, answerId) {
   }
 }
 
-export function nextQuestion() {
+export function nextQuestion(questionId, answerId) {
   return {
-    type: actions.NEXT_QUESTION
+    type: actions.NEXT_QUESTION,
+    questionId,
+    answerId
   }
 }

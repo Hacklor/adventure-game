@@ -5,25 +5,25 @@ import Answer from './answer'
 
 class Question extends Component {
 
+  renderChoice(key, questionId, choice, answerQuestion, nextQuestion) {
+    return (
+      <Answer key={key} questionId={questionId} choice={choice}
+        answerQuestion={answerQuestion} nextQuestion={nextQuestion} />
+    )
+  }
+
   render() {
-    this.answerQuestion = this.props.answerQuestion;
-    this.nextQuestion = this.props.nextQuestion;
-    this.question = this.props.currentQuestion;
-    const choices = this.question.answers.choices;
+    const answerQuestion = this.props.answerQuestion;
+    const nextQuestion = this.props.nextQuestion;
+    const question = this.props.currentQuestion;
+    const choices = question.answers.choices;
 
     return (
       <div>
-        <h2>{this.question.title}</h2>
-        <p>{this.question.description}</p>
+        <h2>{question.title}</h2>
+        <p>{question.description}</p>
         <ul>
-          {
-            choices.map((choice, i) => {
-              return (
-                <Answer key={i} questionId={this.question.id} choice={choice}
-                  answerQuestion={this.answerQuestion} nextQuestion={this.nextQuestion} />
-              )
-            })
-          }
+          { choices.map((choice, i) => { return this.renderChoice(i, question.id, choice, answerQuestion, nextQuestion) }) }
         </ul>
       </div>
     )

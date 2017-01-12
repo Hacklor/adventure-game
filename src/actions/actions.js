@@ -1,0 +1,2 @@
+export const ANSWER_QUESTION = 'ANSWER_QUESTION'
+export const NEXT_QUESTION = 'NEXT_QUESTION'

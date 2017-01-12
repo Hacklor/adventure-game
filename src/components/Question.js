@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import Answers from './answers'
+import Answer from './answer'
 
 class Question extends Component {
+  constructor(props) {
+    super(props);
+
+    this.answerQuestion = this.props.answerQuestion;
+    this.question = this.props.currentQuestion;
+  }
+
   render() {
-    const question = this.props.currentQuestion;
-    const answerQuestion = this.props.answerQuestion;
+    const choices = this.question.answers.choices;
 
     return (
       <div>
-        <h2>{question.title}</h2>
-        <p>{question.description}</p>
-        <Answers question={question} answerQuestion={answerQuestion} />
+        <h2>{this.question.title}</h2>
+        <p>{this.question.description}</p>
+        <ul>
+          {
+            choices.map((choice, i) => {
+              return (
+                <Answer key={i} questionId={this.question.id} choice={choice} answerQuestion={this.answerQuestion} />
+              )
+            })
+          }
+        </ul>
       </div>
     )
   }
